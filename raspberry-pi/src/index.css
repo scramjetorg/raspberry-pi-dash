@@ -20,11 +20,12 @@ code {
 }
 
 .header h1 {
+  margin-left: 30px;
   color: rgb(16, 46, 79);
 }
 
 .container {
-  max-width: 80%;
+  max-width: 1100px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
@@ -33,13 +34,19 @@ code {
   border-radius: 15px;
 }
 
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .chartContainer {
+  margin: 10px;
   max-width: 80%;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
   background-color: rgba(248,248,248,255);
-  padding: 30px;
+  padding: 10px;
   border-radius: 25px;
   background-color: white;
 }
