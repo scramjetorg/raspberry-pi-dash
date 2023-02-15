@@ -7,3 +7,28 @@
 The following configuration was tested on Raspberry Pi Zero 2 W booted in headless mode with 64-bit image.
 
 How to set up headless rPi? ---FUTURE LINK---
+
+xyz
+
+## Installation :clamp:
+
+First You should install node.js:
+```
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+```
+```
+sudo apt-get install -y nodejs
+```
+then install our STH and CLI:
+
+```
+sudo npm i -g @scramjet/sth @scramjet/cli
+```
+
+Verify installation:
+```
+node -v
+si -v
+```
+
+# Troubleshooting :collision:
