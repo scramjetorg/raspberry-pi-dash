@@ -4,7 +4,7 @@
  
  ## Introduction
 
-The following configuration was tested on Raspberry Pi Zero 2 W booted in headless mode with 64-bit image.
+The following configuration was tested on Raspberry Pi Zero 2 W booted in headless mode with 64-bit image (5.15 kernel).
 
 How to boot rPi? [official video](https://www.youtube.com/watch?v=ntaXWS8Lk34&feature=youtu.be)
 
