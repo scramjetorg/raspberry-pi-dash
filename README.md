@@ -33,7 +33,7 @@ si -v
 
 ## Start STH :checkered_flag:
 
-Create rpi_config.json:
+Create rpi_config.json (you can also use yaml file):
 ```
 {
 "runtimeAdapter": "process",
