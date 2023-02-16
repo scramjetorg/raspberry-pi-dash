@@ -32,7 +32,7 @@ si -v
 
 ## Start STH :checkered_flag:
 
-Create rpi_config.json:
+Create sth_rpi_config.json:
 ```
 {
 "runtimeAdapter": "process",
@@ -40,7 +40,7 @@ Create rpi_config.json:
 "instanceRequirements": { "freeMem": 64 }
 }
 ```
-**or** rpi_config.yml:
+**or** sth_rpi_config.yml:
 ```
 safeOperationLimit: 128
 runtimeAdapter: process
@@ -53,7 +53,7 @@ instanceRequirements:
 
 and launch Scramjet Transform Hub 
 ```
-sth --config /path/to/config/rpi_config.json
+sth --config /path/to/config/sth_rpi_config.json
 ```
 :bulb: Note: As default hub reserves 512MB of RAM, if your raspberry has 1GB+ you can try run sth without custom memory limits
 
