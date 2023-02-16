@@ -6,9 +6,8 @@
 
 The following configuration was tested on Raspberry Pi Zero 2 W booted in headless mode with 64-bit image.
 
-How to set up headless rPi? ---FUTURE LINK---
+How to boot rPi? [official video](https://www.youtube.com/watch?v=ntaXWS8Lk34&feature=youtu.be)
 
-xyz
 
 ## Installation :clamp:
 
@@ -33,7 +32,7 @@ si -v
 
 ## Start STH :checkered_flag:
 
-Create rpi_config.json (you can also use yaml file):
+Create rpi_config.json:
 ```
 {
 "runtimeAdapter": "process",
@@ -41,6 +40,16 @@ Create rpi_config.json (you can also use yaml file):
 "instanceRequirements": { "freeMem": 64 }
 }
 ```
+**or** rpi_config.yml:
+```
+safeOperationLimit: 128
+runtimeAdapter: process
+instanceRequirements:
+    freeMem: 64
+```
+
+
+
 
 and launch Scramjet Transform Hub 
 ```
