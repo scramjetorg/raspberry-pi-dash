@@ -11,7 +11,6 @@ import {
     Legend,
 } from "chart.js";
 
-
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -22,12 +21,13 @@ ChartJS.register(
     Legend
 );
 
-const Chart5 = () => {
+const Temperature = () => {
     const options = {
         responsive: true,
         plugins: {
             title: {
-                display: false,
+                display: true,
+                text: "Temperature"
             },
         },
     };
@@ -36,19 +36,19 @@ const Chart5 = () => {
         labels,
         datasets: [
             {
-                label: "Placeholder",
-                data: [23, 23, 13, -4, 14, 23, 34],
-                borderColor: "rgb(37,119,191)",
-                backgroundColor: "rgba(37, 119, 191, 0.726)",
+                label: "CPU Temperature [C\u00B0]",
+                data: [10, 24, 21, 35, 32, 41, 28],
+                borderColor: "rgba(23, 112, 201, 0.9)",
+                backgroundColor: "rgba(23, 112, 201, 0.8)",
             }
         ],
     };
 
     return (
-        <div className="chartContainer">
+        <div className='chartContainer'>
             <Line data={data} options={options}/>
         </div>
     );
 };
 
-export default Chart5;
+export default Temperature;
