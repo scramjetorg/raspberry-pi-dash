@@ -1,5 +1,5 @@
-import React from 'react'
-import { Line } from 'react-chartjs-2';
+import React from "react";
+import { Line } from "react-chartjs-2";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -9,7 +9,7 @@ import {
     Title,
     Tooltip,
     Legend,
-  } from 'chart.js';
+} from "chart.js";
 
 
 ChartJS.register(
@@ -20,7 +20,7 @@ ChartJS.register(
     Title,
     Tooltip,
     Legend
-  );
+);
 
 const Chart5 = () => {
     const options = {
@@ -31,23 +31,24 @@ const Chart5 = () => {
             },
         },
     };
-    const labels = ['1', '2', '3', '4', '5', '6', '7'];
+    const labels = ["1", "2", "3", "4", "5", "6", "7"];
     const data = {
-         labels,
-         datasets: [
-           {
-             label: 'Placeholder',
-             data: [23, 23, 13, -4, 14, 23, 34],
-             borderColor: 'rgb(37,119,191)',
-             backgroundColor: 'rgba(37, 119, 191, 0.726)',
-           }
+        labels,
+        datasets: [
+            {
+                label: "Placeholder",
+                data: [23, 23, 13, -4, 14, 23, 34],
+                borderColor: "rgb(37,119,191)",
+                backgroundColor: "rgba(37, 119, 191, 0.726)",
+            }
         ],
     };
+
     return (
-        <div className='chartContainer'>
+        <div className="chartContainer">
             <Line data={data} options={options}/>
         </div>
-    )
-}
+    );
+};
 
-export default Chart5
+export default Chart5;
