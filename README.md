@@ -58,3 +58,12 @@ sth --config /path/to/config/sth_rpi_config.json
 :bulb: Note: As default hub reserves 512MB of RAM, if your raspberry has 1GB+ you can try run sth without custom memory limits
 
 # Troubleshooting :collision:
+## Why my computer doesn't see the Raspberry?
+
+Raspberry Team have removed deafault user. If you created image with non official (eg. balenaEtcher), you need to create userconf.txt (in the boot root directory) and add the following line:
+```
+pi:$6$/XOZsG1X0IAbhXB0$wYZHRkvib0SUKQA3KVAxofPR.JsFAbI2NCue2znGvhRsQobVdllFXyQZ7fMSvAoyEj8MfHtkMeSZT7IRIixg01
+
+```
+this step will enable deafault user (user: pi, password: raspberry).
+
