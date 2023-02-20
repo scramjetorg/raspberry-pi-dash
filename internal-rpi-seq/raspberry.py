@@ -1,7 +1,6 @@
 import asyncio
-import random
 from scramjet.streams import Stream
-# from gpiozero import CPUTemperature, DiskUsage, LoadAverage, PingServer
+from gpiozero import CPUTemperature, DiskUsage, LoadAverage, PingServer
 
 
 provides = {
@@ -9,13 +8,13 @@ provides = {
    'contentType': 'text/plain'
 }
 
-async def set_internals(stream, intervals=3):
+async def set_internals(stream, interval=3):
     while True:
-        cpu_temp = round(random.uniform(20,90), 2)
-        disk_usage = round(random.uniform(5,95), 2)
-        load_avg = round(random.uniform(0,100), 2)
+        cpu_temp = round(CPUTemperature().temperature, 2)
+        disk_usage = round(DiskUsage().usage, 2)
+        load_avg = round(LoadAverage().load_average, 2)
         stream.write([cpu_temp, disk_usage, load_avg])
-        await asyncio.sleep(intervals)
+        await asyncio.sleep(interval)
 
 async def run(context, input):
     stream = Stream()
