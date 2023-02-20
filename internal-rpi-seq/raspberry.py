@@ -1,23 +1,25 @@
 import asyncio
-from gpiozero import CPUTemperature, DiskUsage, LoadAverage, PingServer
+import random
+from scramjet.streams import Stream
+# from gpiozero import CPUTemperature, DiskUsage, LoadAverage, PingServer
 
 
-async def run(context, input, interval=1):
+provides = {
+   'provides': 'pi',
+   'contentType': 'text/plain'
+}
+
+async def set_internals(stream, intervals=3):
     while True:
-        # cpu_temp = 37.234
-        # disk_usage = 7.456
-        # load_avg = 11.4645
-        cpu = CPUTemperature()
-        cpu_temp = cpu.temperature
-        disk = DiskUsage()
-        disk_usage = disk.usage
-        load = LoadAverage()
-        load_avg = load.load_average()
-        # google = PingServer('google.com')
-        # print(google)
-        # print(f'Current disk usage: {disk_usage:.2f}%')
-        # print(f'CPU Temperature: {cpu_temp:.2f}C')
-        # print(f'CPU Load: {load_avg}%')
-        print(f'------------------------')
-        await asyncio.sleep(interval)
-        yield cpu_temp, disk_usage, load_avg
+        cpu_temp = round(random.uniform(20,90), 2)
+        disk_usage = round(random.uniform(5,95), 2)
+        load_avg = round(random.uniform(0,100), 2)
+        stream.write([cpu_temp, disk_usage, load_avg])
+        await asyncio.sleep(intervals)
+
+async def run(context, input):
+    stream = Stream()
+    asyncio.gather(set_internals(stream), return_exceptions=True)
+    return stream.map(lambda x : str(x) + "\n")
+
+
