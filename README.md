@@ -48,14 +48,50 @@ instanceRequirements:
     freeMem: 64
 ```
 
-
-
-
 and launch Scramjet Transform Hub 
 ```
 sth --config /path/to/config/sth_rpi_config.json
 ```
 :bulb: Note: As default hub reserves 512MB of RAM, if your raspberry has 1GB+ you can try run sth without custom memory limits
+
+
+# Set up the Sequence
+
+clone this git repository:
+
+```bash
+git clone git@github.com:scramjetorg/raspberry-pi-dash.git
+```
+
+cd inside sequence directory:
+
+```bash
+cd seq-internal-rpi
+```
+
+now you have to build dist directory:
+
+```bash
+npm run build
+```
+and deploy the sequence! :rocket: :
+
+```bash
+si seq deploy dist
+```
+now the Instance of your Sequence is running and producing to "pi" topic, you can verify that by launching topic listener via CLI:
+
+```bash
+si topic get pi
+```
+you should see similar output:
+```
+[72.58, 83.75, 74.99]
+[48.51, 47.93, 75.12]
+[84.16, 80.84, 47.54]
+[62.07, 59.46, 69.06]
+```
+
 
 # Troubleshooting :collision:
 ## Why my computer doesn't see the Raspberry?
@@ -66,4 +102,10 @@ pi:$6$/XOZsG1X0IAbhXB0$wYZHRkvib0SUKQA3KVAxofPR.JsFAbI2NCue2znGvhRsQobVdllFXyQZ7
 
 ```
 this step will enable deafault user (user: pi, password: raspberry).
+## Dictionary:
+
+- STH - Scramjet Transform Hub
+- Instance - is running sequence
+- Topics - are named buses over which hubs exchange messages
+
 
