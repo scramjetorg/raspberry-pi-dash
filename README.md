@@ -93,8 +93,8 @@ you should see similar output:
 ```
 
 
-# Troubleshooting :collision:
-## Why my computer doesn't see the Raspberry?
+## Troubleshooting :collision:
+### Why my computer doesn't see the Raspberry?
 
 Raspberry Team have removed deafault user. If you created image with non official (eg. balenaEtcher), you need to create userconf.txt (in the boot root directory) and add the following line:
 ```
