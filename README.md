@@ -79,7 +79,7 @@ and deploy the sequence! :rocket: :
 ```bash
 si seq deploy dist
 ```
-now the Instance of your Sequence is running and producing to "pi" topic, you can verify that by launching topic listener via CLI:
+now the Instance of your Sequence is running and producing to "pi" topic, you can verify that by launching topic listener :ear: via CLI:
 
 ```bash
 si topic get pi
@@ -96,16 +96,17 @@ you should see similar output:
 ## Troubleshooting :collision:
 ### Why my computer doesn't see the Raspberry?
 
-Raspberry Team have removed deafault user. If you created image with non official (eg. balenaEtcher), you need to create userconf.txt (in the boot root directory) and add the following line:
+Raspberry Team have removed deafault user. If you created image with non official imager (eg. balenaEtcher), you need to create userconf.txt (in the boot root directory) and add the following line:
 ```
 pi:$6$/XOZsG1X0IAbhXB0$wYZHRkvib0SUKQA3KVAxofPR.JsFAbI2NCue2znGvhRsQobVdllFXyQZ7fMSvAoyEj8MfHtkMeSZT7IRIixg01
 
 ```
 this step will enable deafault user (user: pi, password: raspberry).
+
 ## Dictionary:
 
 - STH - Scramjet Transform Hub
 - Instance - is running sequence
-- Topics - are named buses over which hubs exchange messages
+- Topics - are named buses over which Instances exchange messages
 
 
