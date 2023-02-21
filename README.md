@@ -44,9 +44,9 @@ si -v
 Create sth_rpi_config.json:
 ```
 {
-"runtimeAdapter": "process",
-"safeOperationLimit": 128,
-"instanceRequirements": { "freeMem": 64 }
+    "runtimeAdapter": "process",
+    "safeOperationLimit": 128,
+    "instanceRequirements": { "freeMem": 64 }
 }
 ```
 **or** sth_rpi_config.yml:
@@ -105,12 +105,12 @@ these values are respectively: chip temperature in Celcius degrees, disk usage a
 ## FAQ Troubleshooting :collision:
 ### Why my computer doesn't see the Raspberry?
 
-Raspberry Team have removed deafault user. If you created image with non official imager (eg. balenaEtcher), you need to create userconf.txt (in the boot root directory) and add the following line:
+Raspberry Team have removed default user. If you created image with non official imager (eg. balenaEtcher), you need to create userconf.txt (in the boot root directory) and add the following line:
 ```
 pi:$6$/XOZsG1X0IAbhXB0$wYZHRkvib0SUKQA3KVAxofPR.JsFAbI2NCue2znGvhRsQobVdllFXyQZ7fMSvAoyEj8MfHtkMeSZT7IRIixg01
 
 ```
-this step will enable deafault user (user: pi, password: raspberry).
+this step will enable default user (user: pi, password: raspberry).
 
 ### I made some changes in my code, how to rebuild the sequence?
 
