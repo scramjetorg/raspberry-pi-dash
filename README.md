@@ -9,7 +9,7 @@
 - [Installation :clamp:](#installation-clamp)
 - [Start STH :checkered_flag:](#start-sth-checkered_flag)
 - [Set up the Sequence 🔨](#set-up-the-sequence)
-- [Troubleshooting :collision:](#troubleshooting-collision)
+- [FAQ | Troubleshooting :collision:](#faq-troubleshooting-collision)
  
  ## Introduction
 
@@ -102,7 +102,7 @@ you should see similar output:
 ```
 
 
-## Troubleshooting :collision:
+## FAQ Troubleshooting :collision:
 ### Why my computer doesn't see the Raspberry?
 
 Raspberry Team have removed deafault user. If you created image with non official imager (eg. balenaEtcher), you need to create userconf.txt (in the boot root directory) and add the following line:
@@ -111,6 +111,10 @@ pi:$6$/XOZsG1X0IAbhXB0$wYZHRkvib0SUKQA3KVAxofPR.JsFAbI2NCue2znGvhRsQobVdllFXyQZ7
 
 ```
 this step will enable deafault user (user: pi, password: raspberry).
+
+### I made some changes in my code, how to rebuild the sequence?
+
+There are two ways, you can force rebuld with `npm run build --upgrade` or manually remove `/dist` directory and do simple `npm run build`.
 
 ## Dictionary:
 
