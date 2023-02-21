@@ -20,7 +20,7 @@ How to boot rPi? -> [official video](https://www.youtube.com/watch?v=ntaXWS8Lk34
 
 ## Installation :clamp:
 
-First You should install node.js:
+First You should install node.js (we recommend 16.x):
 ```
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 ```
