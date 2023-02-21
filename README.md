@@ -72,7 +72,7 @@ clone this git repository:
 git clone git@github.com:scramjetorg/raspberry-pi-dash.git
 ```
 
-cd inside sequence directory:
+`cd` inside sequence directory:
 
 ```bash
 cd seq-internal-rpi
