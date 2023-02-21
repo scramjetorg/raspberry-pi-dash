@@ -13,7 +13,7 @@
  
  ## Introduction
 
-The following configuration was tested on Raspberry Pi Zero 2 W booted in headless mode with 64-bit image (5.15 kernel).
+Scramjet Sequences don't require high hardware requirements. You can run it also on cheap single-board computers for example Raspberry Pi <img width="1.2%" src="https://user-images.githubusercontent.com/81818614/219020422-56b87af7-fb08-4de3-9a92-b95c550fc834.svg"> The following configuration was tested on Raspberry Pi Zero 2 W booted in headless mode with 64-bit image (5.15 kernel).
 
 How to boot rPi? [official video](https://www.youtube.com/watch?v=ntaXWS8Lk34&feature=youtu.be)
 
