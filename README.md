@@ -13,7 +13,7 @@
  
  ## Introduction
 
-Scramjet Sequences don't require high hardware requirements. You can run it also on cheap single-board computers for example Raspberry Pi <img width="1.2%" src="https://user-images.githubusercontent.com/81818614/219020422-56b87af7-fb08-4de3-9a92-b95c550fc834.svg"> The following configuration was tested on Raspberry Pi Zero 2 W booted in headless mode with 64-bit image (5.15 kernel).
+Scramjet Sequences don't require high hardware requirements. You can run it also on cheap single-board computers for example Raspberry Pi <img width="1.2%" src="https://user-images.githubusercontent.com/81818614/219020422-56b87af7-fb08-4de3-9a92-b95c550fc834.svg"> The following configuration was tested on Raspberry Pi Zero 2 W booted in headless mode with 64-bit image (5.15 kernel). In this example we will capture some internal parameters of RPi in real time.
 
 How to boot rPi? [official video](https://www.youtube.com/watch?v=ntaXWS8Lk34&feature=youtu.be)
 
@@ -100,7 +100,7 @@ you should see similar output:
 [38.63, 8.35, 0.24]
 [38.63, 8.35, 0.24]
 ```
-
+these values are respectively: chip temperature in Celcius degrees, disk usage and average CPU load.
 
 ## FAQ Troubleshooting :collision:
 ### Why my computer doesn't see the Raspberry?
