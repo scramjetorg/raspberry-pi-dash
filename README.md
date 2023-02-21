@@ -119,6 +119,7 @@ There are two ways, you can force rebuld with `npm run build --upgrade` or manua
 ## Dictionary:
 
 - STH - Scramjet Transform Hub
-- Instance - is running sequence
+- Sequence - program adapted to run in STH environment
+- Instance - running Sequence
 - Topics - are named buses over which Instances exchange messages
 - si - Scramjet Command Line Interface
