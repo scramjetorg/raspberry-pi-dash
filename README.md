@@ -2,6 +2,15 @@
 
  🚀 + <img width="2%" src="https://user-images.githubusercontent.com/81818614/219020422-56b87af7-fb08-4de3-9a92-b95c550fc834.svg"> ? Why not!
  
+ 
+ # Table of contents <!-- omit in toc -->
+
+- [Introduction :handshake:](#introduction)
+- [Installation :clamp:](#installation-clamp)
+- [Start STH :checkered_flag:](#start-sth-checkered_flag)
+- [Set up the Sequence 🔨](#set-up-the-sequence)
+- [Troubleshooting :collision:](#troubleshooting-collision)
+ 
  ## Introduction
 
 The following configuration was tested on Raspberry Pi Zero 2 W booted in headless mode with 64-bit image (5.15 kernel).
@@ -55,7 +64,7 @@ sth --config /path/to/config/sth_rpi_config.json
 :bulb: Note: As default hub reserves 512MB of RAM, if your raspberry has 1GB+ you can try run sth without custom memory limits
 
 
-# Set up the Sequence
+## Set up the Sequence
 
 clone this git repository:
 
