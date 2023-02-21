@@ -114,7 +114,7 @@ this step will enable default user (user: pi, password: raspberry).
 
 ### I made some changes in my code, how to rebuild the sequence?
 
-There are two ways, you can force rebuld with `npm run build --upgrade` or manually remove `/dist` directory and do simple `npm run build`.
+There are two ways, you can force rebuild with `npm run build --upgrade` or manually remove `/dist` directory and do simple `npm run build`.
 
 ## Dictionary:
 
