@@ -61,7 +61,7 @@ and launch Scramjet Transform Hub
 ```
 sth --config /path/to/config/sth_rpi_config.json
 ```
-:bulb: Note: As default hub reserves 512MB of RAM, if your raspberry has 1GB+ you can try run sth without custom memory limits
+:bulb: Note: As default hub reserves 512MB of RAM, if your raspberry has 1GB or more, you can try run sth without custom memory limits
 
 
 ## Set up the Sequence
@@ -121,5 +121,4 @@ There are two ways, you can force rebuld with `npm run build --upgrade` or manua
 - STH - Scramjet Transform Hub
 - Instance - is running sequence
 - Topics - are named buses over which Instances exchange messages
-
-
+- si - Scramjet Command Line Interface
