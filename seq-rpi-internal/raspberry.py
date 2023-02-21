@@ -19,6 +19,6 @@ async def set_internals(stream, interval=3):
 async def run(context, input):
     stream = Stream()
     asyncio.gather(set_internals(stream), return_exceptions=True)
-    return stream.map(lambda x : str(x) + "\n")
+    return stream.map(lambda x : x + "\n")
 
 
