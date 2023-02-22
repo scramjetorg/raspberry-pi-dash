@@ -2,15 +2,18 @@
   "name": "@scramjet/raspberry",
   "version": "0.0.1",
   "main": "raspberry.py",
-  "author": "scramjet team",
+  "author": "mcdominik",
   "license": "GPL-3.0",
-  "description": "raspberry internal parameters fetcher example",
+  "description": "raspberry pi internal parameters fetcher example",
   "keywords": [
-    "raspberry"
+    "raspberry",
+    "python",
+    "gpiozero",
+    "topics"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/scramjetorg/platform-samples/tree/main/python/rpilocator-scraper"
+    "url": "https://github.com/scramjetorg/raspberry-pi-dash"
   },
   "engines": {
     "python3": "3.8.0"
