@@ -10,6 +10,7 @@
 - [Start STH :checkered_flag:](#start-sth-checkered_flag)
 - [Set up the Sequence 🔨](#set-up-the-sequence)
 - [FAQ | Troubleshooting :collision:](#faq-troubleshooting-collision)
+- [Dictionary :book:](#dictionary-book)
  
  ## Introduction
 
@@ -116,7 +117,7 @@ this step will enable default user (user: pi, password: raspberry).
 
 There are two ways, you can force rebuild with `npm run build --upgrade` or manually remove `/dist` directory and do simple `npm run build`.
 
-## Dictionary:
+## Dictionary :book:
 
 - STH - Scramjet Transform Hub
 - Sequence - program adapted to run in STH environment
