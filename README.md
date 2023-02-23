@@ -103,6 +103,8 @@ you should see similar output:
 ```
 these values are respectively: chip temperature in Celcius degrees, disk usage and average CPU load.
 
+:bulb: Note: If you want to dig in, there is [full STH documentation](https://github.com/scramjetorg/platform-docs)
+
 ## FAQ Troubleshooting :collision:
 ### Why my computer doesn't see the Raspberry?
 
