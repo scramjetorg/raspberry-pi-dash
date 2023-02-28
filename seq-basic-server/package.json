@@ -1,7 +1,7 @@
 {
   "name": "@scramjet/raspberry",
   "version": "0.0.1",
-  "main": "raspberry.py",
+  "main": "basic_server.py",
   "author": "mcdominik",
   "license": "GPL-3.0",
   "description": "basic python server example",
