@@ -115,6 +115,9 @@ pi:$6$/XOZsG1X0IAbhXB0$wYZHRkvib0SUKQA3KVAxofPR.JsFAbI2NCue2znGvhRsQobVdllFXyQZ7
 ```
 this step will enable default user (user: pi, password: raspberry).
 
+:bulb: We recommend using the official imager
+
+
 ### I made some changes in my code, how to rebuild the sequence?
 
 There are two ways, you can force rebuild with `npm run build --upgrade` or manually remove `/dist` directory and do simple `npm run build`.
