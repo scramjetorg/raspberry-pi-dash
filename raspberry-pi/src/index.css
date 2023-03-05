@@ -25,7 +25,7 @@ code {
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
@@ -41,7 +41,8 @@ code {
 
 .chartContainer {
   margin: 10px;
-  max-width: 80%;
+  width: 30%;
+  /* max-width: 90%; */
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
