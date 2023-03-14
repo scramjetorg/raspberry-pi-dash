@@ -45,9 +45,7 @@ const Temperature = () => {
     };
 
     return (
-        <div className='chartContainer'>
-            <Line data={data} options={options}/>
-        </div>
+        <Line data={data} options={options}/>
     );
 };
 

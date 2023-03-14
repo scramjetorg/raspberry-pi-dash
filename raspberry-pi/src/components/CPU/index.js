@@ -33,9 +33,7 @@ const CpuUsage = () => {
     };
 
     return (
-        <div className='chartContainer'>
-            <Doughnut data={data} options={options}/>
-        </div>
+        <Doughnut data={data} options={options}/>
     );
 };
 
