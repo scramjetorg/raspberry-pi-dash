@@ -2,8 +2,9 @@ from aiohttp import web
 import asyncio
 from scramjet.streams import Stream
 from random import randint
+import nest_asyncio
 # from gpiozero import CPUTemperature, DiskUsage, LoadAverage, PingServer
-
+import functools
 
 connected = set()
 
@@ -18,7 +19,7 @@ async def root(request):
 async def serve(request):
     return web.FileResponse('index.html')
 
-async def websocket_handler(request):
+async def websocket_handler(request, input):
     ws = web.WebSocketResponse()
     connected.add(ws)
     await ws.prepare(request)
@@ -28,25 +29,28 @@ async def websocket_handler(request):
                 if msg.data == 'close':
                     await ws.close()
                 else:
-                    await connection.send_str(f'ok, data from topic:{await get_from_topic()}')
+                    await connection.send_str(f'ok, data from topic:{await get_from_topic(input)}')
             elif msg.type == web.WSMsgType.ERROR:
                 print(f'ws connection closed with exception {ws.exception()}')
 
     print('websocket connection closed')
     return ws
     
-async def get_from_topic():
-    await asyncio.sleep(1)
-    return 'TOPIC DATA'
 
+bound_handler = functools.partial(websocket_handler, input='input')
+
+async def get_from_topic(input):
+    await asyncio.sleep(1)
+    topic_data = input.map(lambda s: f'consumer got: {s}').each(print)
+    return topic_data
 
 async def run(context, input):
+    nest_asyncio.apply()
     app = web.Application()
     app.add_routes([web.get('/', root)])
-    app.add_routes([web.get('/file', serve)])
-    app.add_routes([web.get('/ws', websocket_handler)])
-    
+    app.add_routes([web.get('/ws', bound_handler)])
+    app.add_routes([web.static('/files', './', show_index=True)])
     # web.run_app(app)
-    asyncio.gather(web.run_app(app), get_from_topic(), return_exceptions=True)
+    asyncio.gather(web.run_app(app), return_exceptions=True)
 
 
