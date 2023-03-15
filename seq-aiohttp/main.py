@@ -37,19 +37,18 @@ async def websocket_handler(request, input):
     return ws
     
 
-bound_handler = functools.partial(websocket_handler, input='input')
-
 async def get_from_topic(input):
     await asyncio.sleep(1)
-    topic_data = input.map(lambda s: f'consumer got: {s}').each(print)
+    topic_data = input.map(lambda s: f'consumer got: {s}') # here should be a JSON stringifier...
     return topic_data
 
 async def run(context, input):
     nest_asyncio.apply()
+    bound_handler = functools.partial(websocket_handler, input=input)
     app = web.Application()
-    app.add_routes([web.get('/', root)])
+    app.add_routes([web.get('/', serve)])
     app.add_routes([web.get('/ws', bound_handler)])
-    app.add_routes([web.static('/files', './', show_index=True)])
+    app.add_routes([web.static('/files', './', show_index=True)]) # this seems to be missing?
     # web.run_app(app)
     asyncio.gather(web.run_app(app), return_exceptions=True)
 
