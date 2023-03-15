@@ -2,6 +2,8 @@ from aiohttp import web
 import asyncio
 from scramjet.streams import Stream
 from random import randint
+from pyee.base import EventEmitter
+
 import nest_asyncio
 # from gpiozero import CPUTemperature, DiskUsage, LoadAverage, PingServer
 import functools
@@ -19,23 +21,27 @@ async def root(request):
 async def serve(request):
     return web.FileResponse('index.html')
 
-async def websocket_handler(request, input):
+async def websocket_handler(request, ee):
     ws = web.WebSocketResponse()
-    connected.add(ws)
     await ws.prepare(request)
+
+    handler = lambda data: await connection.send_str(f'ok, data from topic:{data}')
+
+    ee.on('data', handler)
+    
     async for msg in ws:
-        for connection in connected:
-            if msg.type == web.WSMsgType.TEXT:
-                if msg.data == 'close':
-                    await ws.close()
-                else:
-                    await connection.send_str(f'ok, data from topic:{await get_from_topic(input)}')
-            elif msg.type == web.WSMsgType.ERROR:
-                print(f'ws connection closed with exception {ws.exception()}')
+        ws.disconnect() # any messages here should kill the connection
+        print("websocket connection started sending data we dont accept")
+    
+    await ee.off('data', handler)
 
     print('websocket connection closed')
     return ws
-    
+
+async def get_event_emitter(input):
+    ee = EventEmitter()
+    input.each(lambda s: ee.emit("data", ee))
+    return ee
 
 async def get_from_topic(input):
     await asyncio.sleep(1)
@@ -44,7 +50,9 @@ async def get_from_topic(input):
 
 async def run(context, input):
     nest_asyncio.apply()
-    bound_handler = functools.partial(websocket_handler, input=input)
+    ee = get_event_emitter(input)
+    bound_handler = functools.partial(websocket_handler, ee=ee)
+    
     app = web.Application()
     app.add_routes([web.get('/', serve)])
     app.add_routes([web.get('/ws', bound_handler)])
