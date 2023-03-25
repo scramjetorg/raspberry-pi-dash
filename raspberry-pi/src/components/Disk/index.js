@@ -4,12 +4,12 @@ import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DiskUsage = () => {
+const DiskUsage = ({ diskData }) => {
     const data = {
-        labels: ["Storage in use"],
+        labels: ["Storage in use", "Free storage"],
         datasets: [
             {
-                data: [13, 87],
+                data: diskData.map((data) => data),
                 backgroundColor: [
                     "rgba(230, 130, 15, 0.721)",
                     "rgba(230, 130, 15, 0.3)",
@@ -23,17 +23,21 @@ const DiskUsage = () => {
         ],
     };
     const options = {
-        responsive: true,
+        maintainAspectRatio: false,
         plugins: {
-            title: {
-                display: true,
-                text: "Disk usage"
-            },
-        },
+            tooltip: {
+                title: "CPU",
+                callbacks: {
+                    label: (contex) => {
+                        return `${contex.parsed}%`
+                    }
+                }
+            }
+        }
     };
 
     return (
-        <Pie data={data} options={options}/>
+        <Pie data={data} options={options} height="400px" width="400px"/>
     );
 };
 

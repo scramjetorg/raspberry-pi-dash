@@ -8,7 +8,7 @@ provides = {
    'contentType': 'text/plain'
 }
 
-async def set_internals(stream, interval=3):
+async def set_internals(stream, interval=5):
     while True:
         cpu_temp = round(CPUTemperature().temperature, 2)
         disk_usage = round(DiskUsage().usage, 2)

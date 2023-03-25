@@ -4,12 +4,12 @@ import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const CpuUsage = () => {
+const CpuUsage = ({ CPUData }) => {
     const data = {
-        labels: ["CPU in use"],
+        labels: ["CPU load"],
         datasets: [
             {
-                data: [24, 76],
+                data: CPUData.map((data) => data),
                 backgroundColor: [
                     "rgba(23, 112, 201, 0.8)",
                     "rgba(23, 112, 201, 0.3)",
@@ -23,17 +23,21 @@ const CpuUsage = () => {
         ],
     };
     const options = {
-        responsive: true,
+        maintainAspectRatio: false,
         plugins: {
-            title: {
-                display: true,
-                text: "CPU usage"
-            },
-        },
+            tooltip: {
+                title: "CPU",
+                callbacks: {
+                    label: (contex) => {
+                        return `${contex.parsed}%`
+                    }
+                }
+            }
+        }
     };
 
     return (
-        <Doughnut data={data} options={options}/>
+        <Doughnut data={data} options={options} height="400px" width="400px"/>
     );
 };
 
