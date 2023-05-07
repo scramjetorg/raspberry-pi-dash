@@ -5,50 +5,38 @@ import Temperature from "./components/Temperature";
 import Chart from "./components/Chart";
 import { useState } from "react";
 import './App.css'
-//webSocket = new WebSocket(url, protocols);
 
+
+var temp = 0;
+var disk = 0;
+var cpu = 0;
 const tempArray = [];
-function App() {
-const [PiState, setPiState] = useState(0);
 
 const socket = new WebSocket(
   "ws://localhost:3000",
   "protocolOne"
 );
 
-const values = []
+function App() {
+const [PiState, setPiState] = useState(0);
+
 
 
 socket.onmessage = function(event) {
-  console.log(event.data);
-  
-  //JSON.parse(key,value)
-  setPiState(event.data);
-  const temp = Math.random() * 60; //values[0];
-  const disk = Math.random() * 60;//values[1];
-  const cpu = Math.random() * 60;//values[2];
-  JSON.parse(PiState, (key, value) => {
-    values[key] = value;
-    
-   return value;
- }); 
-
-}
-
-const temp = Math.random() * 60; //values[0];
-const disk = Math.random() * 60;//values[1];
-const cpu = Math.random() * 60;//values[2];
-  
-
-
-
-
+  setPiState(Math.random() * 60);
+  var obj = JSON.parse(event.data);
+  temp = obj.cpu_temp;
+  disk = obj.disk_usage;
+  cpu = obj.load_avg;
   if (tempArray.length < 7 && !isNaN(temp)) {
     tempArray.push(temp);
   } else if(!isNaN(temp)) {
     tempArray.splice(0, 1); 
     tempArray.push(temp); 
   }
+}
+
+
 
   return (
     <div className="content">

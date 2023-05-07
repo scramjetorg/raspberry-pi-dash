@@ -9,7 +9,7 @@ const queuingStrategy = new ByteLengthQueuingStrategy({ highWaterMark: 1 });
 
 const reactBuild = path.join(__dirname, "client", "build");
 module.exports = [
-{ requires: "topic", contentType: 'application/x-ndjson' },
+{ requires: "pi", contentType: 'application/x-ndjson' },
   function (input) {
     //const buffer = Array(10);
     async function reader() {
