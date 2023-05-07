@@ -7,7 +7,7 @@ const path = require("path");
 const port = process.env.PORT || 3000;
 const queuingStrategy = new ByteLengthQueuingStrategy({ highWaterMark: 1 });
 
-//const reactBuild = path.join(__dirname)
+const reactBuild = path.join(__dirname, "client", "build");
 module.exports = [
 { requires: "topic", contentType: 'application/x-ndjson' },
   function (input) {
@@ -17,24 +17,23 @@ module.exports = [
         //buffer.push(chunk) > 10 && buffer.shift(), buffer
         //console.log(chunk);
         //console.log(queuingStrategy.size(chunk));
-        // try {
-        //   if (wsServer.clients.length === 0) await new Promise(res => wsServer.once("connection", res))
-        //   counter = 0;
+        try {
+          if (wsServer.clients.length === 0) await new Promise(res => wsServer.once("connection", res))
+          counter = 0;
           
-        //   //ustaw buffer <-
-        //   wsServer.clients.forEach(function (client) {
+          //ustaw buffer <-
+          wsServer.clients.forEach(function (client) {
 
-        //     client.send(JSON.stringify(chunk));
-        //   });
-        // }
-        // catch { 
-        //   await new Promise(res => setTimeout(res, 1000));
-        // }
+            client.send(JSON.stringify(chunk));
+          });
+        }
+        catch { 
+          await new Promise(res => setTimeout(res, 1000));
+        }
       }
     }
     const app = express();
-    //app.use(express.static(path.join(__dirname, "..", "build")));
-    //app.use(express.static("public"));
+    
     const wsServer = new ws.Server({ noServer: true });
     wsServer.on('connection', socket => {
       console.log("connected");
@@ -48,15 +47,13 @@ module.exports = [
         wsServer.emit('connection', socket, request);
       });
     });
-    app.use(express.static("../client/build"));
+    app.use(express.static(reactBuild));
     app.get("*", async(req,res)=>{
-      res.sendFile("../client/build/index.html");
+      res.sendFile(path.join(reactBuild, "index.html"));
 
     })
 
-    app.get('/express_backend', (req, res) => { //Line 9
-      res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
-    });
+  
     
     return input;
   }

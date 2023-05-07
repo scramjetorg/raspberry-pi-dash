@@ -1,24 +1,28 @@
 import asyncio
+import newlinejson as nlj
 from scramjet.streams import Stream
 from gpiozero import CPUTemperature, DiskUsage, LoadAverage, PingServer
 
-
 provides = {
    'provides': 'pi',
-   'contentType': 'text/plain'
+   'contentType': 'application/x-ndjson'
 }
+
+params = {'cpu_temp':0,'disk_usage':0,'load_avg':0}
+
+
 
 async def set_internals(stream, interval=5):
     while True:
-        cpu_temp = round(CPUTemperature().temperature, 2)
-        disk_usage = round(DiskUsage().usage, 2)
-        load_avg = round(LoadAverage().load_average, 2)
-        stream.write([cpu_temp, disk_usage, load_avg])
-        await asyncio.sleep(interval)
+        params['cpu_temp'] = round(CPUTemperature().temperature, 2)
+        params['disk_usage'] = round(DiskUsage().usage, 2)
+        params['load_avg'] = round(LoadAverage().load_average, 2)
+        stream.write(params)
+        await asyncio.sleep(interval) 
 
 async def run(context, input):
     stream = Stream()
     asyncio.gather(set_internals(stream), return_exceptions=True)
-    return stream.map(lambda x : x + "\n")
+    return stream.map(lambda x : str(x) + "\n")
 
 
