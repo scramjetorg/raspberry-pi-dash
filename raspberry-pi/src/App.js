@@ -6,76 +6,69 @@ import Chart from "./components/Chart";
 import { useState } from "react";
 import './App.css'
 
-const tempArray = []
+const tempArray = [];
 function App() {
-  const [PiState, setPiState] = useState(0);
+//   const [PiState, setPiState] = useState(0);
 
-  function utf8ArrayToString(aBytes) {
-      var sView = "";
-      
-      for (var nPart, nLen = aBytes.length-1, nIdx = 0; nIdx < nLen; nIdx++) {
-          nPart = aBytes[nIdx];
-          
-          sView += String.fromCharCode(
-              nPart > 251 && nPart < 254 && nIdx + 5 < nLen ? 
-                  (nPart - 252) * 1073741824 + (aBytes[++nIdx] - 128 << 24) + (aBytes[++nIdx] - 128 << 18) + (aBytes[++nIdx] - 128 << 12) + (aBytes[++nIdx] - 128 << 6) + aBytes[++nIdx] - 128
-              : nPart > 247 && nPart < 252 && nIdx + 4 < nLen ? 
-                  (nPart - 248 << 24) + (aBytes[++nIdx] - 128 << 18) + (aBytes[++nIdx] - 128 << 12) + (aBytes[++nIdx] - 128 << 6) + aBytes[++nIdx] - 128
-              : nPart > 239 && nPart < 248 && nIdx + 3 < nLen ? 
-                  (nPart - 240 << 18) + (aBytes[++nIdx] - 128 << 12) + (aBytes[++nIdx] - 128 << 6) + aBytes[++nIdx] - 128
-              : nPart > 223 && nPart < 240 && nIdx + 2 < nLen ? 
-                  (nPart - 224 << 12) + (aBytes[++nIdx] - 128 << 6) + aBytes[++nIdx] - 128
-              : nPart > 191 && nPart < 224 && nIdx + 1 < nLen ?
-                  (nPart - 192 << 6) + aBytes[++nIdx] - 128
-              : 
-                  nPart
-          );
-      }
-      
-      return sView;
-  }
 
-  async function* streamAsyncIterator(stream) {
-    const reader = stream.getReader();
 
-    try {
-      while (true) {
-        const {done, value} = await reader.read();
-        if (done) return;
-        yield value;
-      }
-    }
-    finally {
-      reader.releaseLock();
-    }
-  }
+// componentDidMount() {
+//   this.callBackendAPI()
+//     .then(res => this.setState({ data: res.express }))
+//     .catch(err => console.log(err));
+// };
+//   // fetching the GET route from the Express server which matches the GET route from server.js
+// callBackendAPI = async () => {
+//   const response = await fetch('/express_backend');
+//   const body = await response.json();
 
-  var url ="http://192.168.1.27:8000/api/v1/topic/pi";
+//   if (response.status !== 200) {
+//     throw Error(body.message) 
+//   }
+//   return body;
+// };
+
+//   async function* streamAsyncIterator(stream) {
+//     const reader = stream.getReader();
+
+//     try {
+//       while (true) {
+//         const {done, value} = await reader.read();
+//         if (done) return;
+//         yield value;
+//       }
+//     }
+//     finally {
+//       reader.releaseLock();
+//     }
+//   }
+
+//   var url ="http://192.168.1.27:8000/api/v1/topic/pi";
   const values = []
-  async function asyncUpdatePiState() {
-    const response = await fetch(url);
-    for await (const chunk of streamAsyncIterator(response.body)) {
-      setPiState(utf8ArrayToString(chunk))
-    }
-  }
+//   async function asyncUpdatePiState() {
+//     const response = await fetch(url);
+//     for await (const chunk of streamAsyncIterator(response.body)) {
+//       setPiState(chunk)
+//     }
+//   }
  
-  asyncUpdatePiState()
+//   asyncUpdatePiState()
   
-  JSON.parse(PiState, (key, value) => {
-    values[key] = value;
-    return value;
-  }); 
+//   JSON.parse(PiState, (key, value) => {
+//     values[key] = value;
+//     return value;
+//   }); 
 
   const temp = values[0];
   const disk = values[1];
   const cpu = values[2];
 
-  if (tempArray.length < 7 && !isNaN(temp)) {
-    tempArray.push(temp);
-  } else if(!isNaN(temp)) {
-    tempArray.splice(0, 1); 
-    tempArray.push(temp); 
-  }
+//   if (tempArray.length < 7 && !isNaN(temp)) {
+//     tempArray.push(temp);
+//   } else if(!isNaN(temp)) {
+//     tempArray.splice(0, 1); 
+//     tempArray.push(temp); 
+//   }
 
   return (
     <div className="content">
