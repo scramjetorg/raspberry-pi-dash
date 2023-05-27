@@ -15,9 +15,9 @@ params = {"cpu_temp":0,'disk_usage':0,'load_avg':0}
 
 async def run(context, input):
     while True:
-        params['cpu_temp']=5
-        params['disk_usage']  = 5
-        params['load_avg']  = 5
+        params['cpu_temp']=round(CPUTemperature().temperature, 2)
+        params['disk_usage']  = round(DiskUsage().usage, 2)
+        params['load_avg']  = round(LoadAverage().load_average, 2)
         yield json.dumps(params)
         await asyncio.sleep(3) 
 
