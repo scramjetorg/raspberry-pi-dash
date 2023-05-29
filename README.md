@@ -65,24 +65,52 @@ sth --config /path/to/config/sth_rpi_config.json
 :bulb: Note: As default hub reserves 512MB of RAM, if your raspberry has 1GB or more, you can try run sth without custom memory limits
 
 
-## Set up the Sequence
+## Set up the server and provider
 
 clone this git repository:
 
 ```bash
 git clone git@github.com:scramjetorg/raspberry-pi-dash.git
 ```
+Start by personalizing the code to your device:
+```bash
 
-`cd` inside sequence directory:
+cd rpi/ser-seq/client/src/ 
+```
+In the directory provided, find the "App.js" file and change the websocket's ip address to that of your device.
+![image](https://user-images.githubusercontent.com/85632612/241806611-9351051d-df7f-4b9b-b9d7-1cd6ebece5bc.png)
+# Server
+
+Install dependencies and build a static folder for server:
 
 ```bash
-cd seq-internal-rpi
+cd rpi/ser-seq/client/
+
+npm install             # install dependencies
+
+npm run build           # build static folder
+
+cd rpi/ser-seq/
+
+npm install             # install dependencies
+
 ```
 
-now you have to build dist directory:
+You can deploy a hosting sequence :rocket: :
 
 ```bash
-npm run build
+si seq deploy ser-seq   # Be sure to execute this command while being in a directory that contains the "ser-seq" folder
+```
+If launched correctly, the transfom hub terminal will display the message "Listening on port 3000"
+
+# Provider
+
+Enter the directory of the parameter-reading sequence:
+
+```bash
+cd rpi/rpi-seq
+
+npm run build           # build sequence
 ```
 and deploy the sequence! :rocket: :
 
@@ -104,6 +132,11 @@ you should see similar output:
 these values are respectively: chip temperature in Celcius degrees, disk usage and average CPU load.
 
 :bulb: Note: If you want to dig in, there is [full STH documentation](https://github.com/scramjetorg/platform-docs)
+
+# Testing
+
+Now you can monitor the parameters of your device by connecting in your browser to its address.
+![image](https://user-images.githubusercontent.com/85632612/241807654-21146f47-a473-46c0-9f95-79b1aac3447a.png)
 
 ## FAQ Troubleshooting :collision:
 ### Why my computer doesn't see the Raspberry?
