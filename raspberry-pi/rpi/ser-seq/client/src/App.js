@@ -13,7 +13,7 @@ var cpu = 0;
 const tempArray = [];
 
 const socket = new WebSocket(
-  "ws://192.168.1.27:3000",
+  "ws://<your-device-ip>:3000",
   "protocolOne"
 );
 

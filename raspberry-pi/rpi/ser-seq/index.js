@@ -1,17 +1,14 @@
 const express = require('express');
 const expressWs = require('express-ws');
 const ws = require('ws');
-var http = require('http');
 const { Readable } = require('stream');
 const path = require("path");
 const port = process.env.PORT || 3000;
-const queuingStrategy = new ByteLengthQueuingStrategy({ highWaterMark: 1 });
 
 const reactBuild = path.join(__dirname, "client", "build");
 module.exports = [
 { requires: "pi", contentType: "text/plain" },
   function (input) {
-    //const buffer = Array(10);
     async function reader() {
       for await (const chunk of input) {
         try {
